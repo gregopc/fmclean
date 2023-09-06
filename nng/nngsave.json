@@ -99,55 +99,68 @@
     },
     {
       "lean": "lemma zero_pow_zero : (0 : mynat) ^ (0 : mynat) = 1 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw pow_zero,\nrefl,"
     },
     {
       "lean": "lemma zero_pow_succ (m : mynat) : (0 : mynat) ^ (succ m) = 0 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw pow_succ,\nsimp,\n"
     },
     {
       "lean": "lemma pow_one (a : mynat) : a ^ (1 : mynat) = a :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw one_eq_succ_zero,\nrw pow_succ,\nrw pow_zero,\nsimp,"
     },
     {
       "lean": "lemma one_pow (m : mynat) : (1 : mynat) ^ m = 1 :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction m with n,\nrw pow_zero,\nrefl,\nrw pow_succ,\nrw m_ih,\nsimp,\n"
     },
     {
       "lean": "lemma pow_add (a m n : mynat) : a ^ (m + n) = a ^ m * a ^ n :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction n with p,\nrw pow_zero,\nsimp,\nrw pow_succ,\nsimp,\nrw ← n_ih,\nrw mul_comm,\nrw ← pow_succ,\nrw ← add_succ,\nrefl,"
     },
     {
       "lean": "lemma mul_pow (a b n : mynat) : (a * b) ^ n = a ^ n * b ^ n :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction n with d,\nrepeat{rw pow_zero},\nsimp,\nrepeat{rw pow_succ},\nsimp,\nrw n_ih,\nrefl,\n"
     },
     {
       "lean": "lemma pow_pow (a m n : mynat) : (a ^ m) ^ n = a ^ (m * n) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "induction n with p,\nsimp,\nrepeat{rw pow_zero},\nrw pow_succ,\nrw n_ih,\nrw ← pow_add,\nrw ← mul_succ,\nrefl,\n"
     },
     {
       "lean": "lemma add_squared (a b : mynat) :\n  (a + b) ^ (2 : mynat) = a ^ (2 : mynat) + b ^ (2 : mynat) + 2 * a * b :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "rw two_eq_succ_one,\nrw one_eq_succ_zero,\nrepeat {rw pow_succ},\nrepeat{rw succ_mul},\nrepeat{rw pow_zero},\nsimp,\nrw add_mul,\nrepeat{rw mul_add},\nsimp,\n\n\n\n"
     },
     {
       "lean": "example (P Q : Type) (p : P) (h : P → Q) : Q :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "exact h(p),"
     },
     {
       "lean": "example : mynat → mynat :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro n,\nexact 3*n+2,\n"
     },
     {
       "lean": "example (P Q R S T U: Type)\n(p : P)\n(h : P → Q)\n(i : Q → R)\n(j : Q → T)\n(k : S → T)\n(l : T → U)\n: U :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "have q:= h(p),\nhave t: T := j(q),\nhave u: U := l(t),\nexact u,\n"
     },
     {
       "lean": "example (P Q R S T U: Type)\n(p : P)\n(h : P → Q)\n(i : Q → R)\n(j : Q → T)\n(k : S → T)\n(l : T → U)\n: U :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "apply l,\napply j,\napply h,\nexact p,\n"
     },
     {
       "lean": "example (P Q : Type) : P → (Q → P) :=\n",
-      "editorText": "sorry"
+      "isSolved": true,
+      "editorText": "intro p,\nintro q,\nexact p,\n"
     },
     {
       "lean": "example (P Q R : Type) : (P → (Q → R)) → ((P → Q) → (P → R)) :=\n",
